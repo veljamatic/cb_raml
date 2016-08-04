@@ -1,6 +1,8 @@
-##Attributes
+## Attributes
 Each attribute describes a single allowed field value of an entity. Every entity can only contain values in the fields defined by its entity type or attribute set, and the values of those fields must match the data type and rules defined in the attribute. Each data type corresponds to a JSON type, though there are more data types than JSON types.
-###Data types
+
+### Data types
+
 | Data type  | JSON type | Description | Example |
 |---|---|---|---|
 |`text`|String|Textual field with basic list of characters. Can be indexed by full-text search|`"This is a title of an article"`|
@@ -17,7 +19,8 @@ Each attribute describes a single allowed field value of an entity. Every entity
 |`relations`|Array|A reference to collection of entities|`[  {    "id": 5,    "type": "entity"  },  {    "id": 6,    "type": "entity"  }]`|
 |`location`|Object|A geographic location specified in latitude and longitude.|`{"lat":"52.5018616",  "lon":"13.4112619"}`|
 |`locations`|Array|A collection of geographic locations|`[{"lat":"52.5018616","lon":"13.4112619"},{"lat":"52.5018616","lon":"13.4112619"}]`|
-###Attribute properties
+
+### Attribute properties
 
 |Property|Type|Description|
 |---|---|---|
@@ -32,4 +35,3 @@ Each attribute describes a single allowed field value of an entity. Every entity
 |`searchable`|Boolean|Flag whether the values will be indexed by full-text search. Only applicable to textual fields.|
 |`default_value`|Mixed|Default value for this attribute|
 |`data`|Object|Metadata that varies for each data type like special validation, input type...|
-
