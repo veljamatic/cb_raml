@@ -1,0 +1,2526 @@
+<!DOCTYPE HTML><html><head><title>CookBook Management API API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>CookBook Management API API documentation <small>version v1</small></h1><p>http://api.cookbookcms.com</p><h3 id="Welcome-to-CB-Dev-Center"><a href="#Welcome-to-CB-Dev-Center">Welcome to CB Dev Center</a></h3><p>Welcome to the <em>CookBook CMS</em> Documentation. The <em>Zencoder API</em> allows you to connect your application to our encoding service and encode videos without going through the web interface. You may also benefit from one of our <a href="https://app.zencoder.com/docs/faq/basics/libraries">integration libraries</a> for different languages.</p><h3 id="Legal"><a href="#Legal">Legal</a></h3><p>velja je car</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="attributes" class="panel-title">Attributes</h3></div><div class="panel-body"><div class="top-resource-description"><h3 id="the-smallest-heading">The smallest heading</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Example bullet list:</p><ul><li>filter</li><li>sort</li><li>limit</li><li>offset</li></ul><table class="table"><thead><tr><th>Property</th><th>Operation</th><th>Examples</th></tr></thead><tbody><tr><td>id</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>code</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>endpoint</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>plural_name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>localized</td><td><code>e</code>, <code>ne</code></td><td></td></tr><tr><td>created_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>updated_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td></tr></tbody></table><p>And here&#39;s some code examples!</p><h4 id="javascript">JavaScript</h4><pre><code class="lang-javascript">$(function(){
+  $(&#39;div&#39;).html(&#39;I am a div.&#39;);
+});
+</code></pre><h4 id="http">HTTP</h4><pre><code class="lang-http">POST /task?id=1 HTTP/1.1
+Host: example.org
+Content-Type: application/json; charset=utf-8
+Content-Length: 137
+
+{
+  "status": "ok",
+  "extended": true,
+  "results": [
+    {"value": 0, "type": "int64"},
+    {"value": 1.0e+3, "type": "decimal"}
+  ]
+}
+</code></pre><pre><code class="lang-http">GET /task?id=1 HTTP/1.1
+</code></pre><pre><code class="lang-http">GET /entities?filter[id][in]=1,2,3&amp;id=1 HTTP/1.1
+</code></pre></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_attributes"><span class="parent"></span>/attributes</a> <span class="methods"><a href="#attributes_get"><span class="badge badge_get">get</span></a> <a href="#attributes_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_attributes" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#attributes_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><h3 id="the-smallest-heading">The smallest heading</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Example bullet list:</p><ul><li>filter</li><li>sort</li><li>limit</li><li>offset</li></ul><table class="table"><thead><tr><th>Property</th><th>Operation</th><th>Examples</th></tr></thead><tbody><tr><td>id</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>code</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>endpoint</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>plural_name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>localized</td><td><code>e</code>, <code>ne</code></td><td></td></tr><tr><td>created_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>updated_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td></tr></tbody></table><p>And here&#39;s some code examples!</p><h4 id="javascript">JavaScript</h4><pre><code class="lang-javascript">$(function(){
+  $(&#39;div&#39;).html(&#39;I am a div.&#39;);
+});
+</code></pre><h4 id="http">HTTP</h4><pre><code class="lang-http">POST /task?id=1 HTTP/1.1
+Host: example.org
+Content-Type: application/json; charset=utf-8
+Content-Length: 137
+
+{
+  "status": "ok",
+  "extended": true,
+  "results": [
+    {"value": 0, "type": "int64"},
+    {"value": 1.0e+3, "type": "decimal"}
+  ]
+}
+</code></pre><pre><code class="lang-http">GET /task?id=1 HTTP/1.1
+</code></pre><pre><code class="lang-http">GET /entities?filter[id][in]=1,2,3&amp;id=1 HTTP/1.1
+</code></pre></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attributes_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new attribute resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="attributes_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/attributes</h4></div><div class="modal-body"><div class="alert alert-info"><h3 id="the-smallest-heading">The smallest heading</h3><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Example bullet list:</p><ul><li>filter</li><li>sort</li><li>limit</li><li>offset</li></ul><table class="table"><thead><tr><th>Property</th><th>Operation</th><th>Examples</th></tr></thead><tbody><tr><td>id</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>code</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>endpoint</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>plural_name</td><td><code>e</code>, <code>ne</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>localized</td><td><code>e</code>, <code>ne</code></td><td></td></tr><tr><td>created_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td><td></td></tr><tr><td>updated_at</td><td><code>e</code>, <code>ne</code>, <code>lt</code>, <code>lte</code>, <code>gt</code>, <code>gte</code>, <code>in</code>, <code>nin</code></td></tr></tbody></table><p>And here&#39;s some code examples!</p><h4 id="javascript">JavaScript</h4><pre><code class="lang-javascript">$(function(){
+  $(&#39;div&#39;).html(&#39;I am a div.&#39;);
+});
+</code></pre><h4 id="http">HTTP</h4><pre><code class="lang-http">POST /task?id=1 HTTP/1.1
+Host: example.org
+Content-Type: application/json; charset=utf-8
+Content-Length: 137
+
+{
+  "status": "ok",
+  "extended": true,
+  "results": [
+    {"value": 0, "type": "int64"},
+    {"value": 1.0e+3, "type": "decimal"}
+  ]
+}
+</code></pre><pre><code class="lang-http">GET /task?id=1 HTTP/1.1
+</code></pre><pre><code class="lang-http">GET /entities?filter[id][in]=1,2,3&amp;id=1 HTTP/1.1
+</code></pre></div><ul class="nav nav-tabs"><li class="active"><a href="#attributes_get_request" data-toggle="tab">Request</a></li><li><a href="#attributes_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attributes_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="attributes_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "code": "title",
+      "admin_label": "Title",
+      "admin_notice": "Article Title",
+      "field_type": "text",
+      "localized": 1,
+      "default_value": "",
+      "unique": 0,
+      "required": 1,
+      "filterable": 0,
+      "searchable": 1,
+      "status": "user_defined",
+      "data": null,
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T18:12:36+0000",
+      "options": [],
+      "type": "attribute",
+      "links": {
+        "self": "http://api.cookbook.com/attributes/1"
+      }
+    },
+    {
+      "id": 2,
+      "code": "theme",
+      "admin_label": "Theme",
+      "admin_notice": "",
+      "field_type": "select",
+      "localized": 0,
+      "default_value": "light",
+      "unique": 0,
+      "required": 1,
+      "filterable": 0,
+      "searchable": 0,
+      "status": "user_defined",
+      "data": {
+        "input_type": "radio_input"
+      },
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T15:31:00+0000",
+      "options": [
+        {
+          "id": 1,
+          "attribute_id": 2,
+          "locale": 0,
+          "label": "Light",
+          "value": "light",
+          "default": 1,
+          "sort_order": 0
+        },
+        {
+          "id": 2,
+          "attribute_id": 2,
+          "locale": 0,
+          "label": "Dark",
+          "value": "dark",
+          "default": 0,
+          "sort_order": 1
+        }
+      ],
+      "type": "attribute",
+      "links": {
+        "self": "http://api.cookbook.com/attributes/2"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "offset": 0,
+    "limit": 0,
+    "total": 2,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/&lt;&lt;resourcePathName&gt;&gt;"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attributes_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/attributes</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new attribute resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attributes_post_request" data-toggle="tab">Request</a></li><li><a href="#attributes_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attributes_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "code": "project_type",
+    "admin_label": "Project Type",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "data": {
+      "input_type": "select_input"
+    },
+    "options": [
+      {
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1
+      },
+      {
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0
+      },
+      {
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0
+      },
+      {
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0
+      }
+    ]
+  }
+}</code></pre></div><div class="tab-pane" id="attributes_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 101,
+    "code": "project_type",
+    "admin_label": "Project Type",
+    "admin_notice": "",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "Residential",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "status": "user_defined",
+    "data": {
+      "input_type": "select_input"
+    },
+    "created_at": "2016-07-24T12:44:26+0000",
+    "updated_at": "2016-07-24T12:44:26+0000",
+    "options": [
+      {
+        "id": 19,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1,
+        "sort_order": 0
+      },
+      {
+        "id": 20,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0,
+        "sort_order": 1
+      },
+      {
+        "id": 21,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0,
+        "sort_order": 2
+      },
+      {
+        "id": 22,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0,
+        "sort_order": 3
+      }
+    ],
+    "type": "attribute",
+    "links": {
+      "self": "http://api.cookbook.com/attributes/101"
+    }
+  },
+  "meta": {
+    "id": "101",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attributes/101"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "attribute": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_attributes__id_"><span class="parent">/attributes</span>/{id}</a> <span class="methods"><a href="#attributes__id__get"><span class="badge badge_get">get</span></a> <a href="#attributes__id__put"><span class="badge badge_put">put</span></a> <a href="#attributes__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_attributes__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#attributes__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the attribute resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attributes__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the attribute resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attributes__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the attribute resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="attributes__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/attributes</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the attribute resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attributes__id__get_request" data-toggle="tab">Request</a></li><li><a href="#attributes__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attributes__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="attributes__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 101,
+    "code": "project_type",
+    "admin_label": "Project Type",
+    "admin_notice": "",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "Residential",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "status": "user_defined",
+    "data": {
+      "input_type": "select_input"
+    },
+    "created_at": "2016-07-24T12:44:26+0000",
+    "updated_at": "2016-07-24T12:44:26+0000",
+    "options": [
+      {
+        "id": 19,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1,
+        "sort_order": 0
+      },
+      {
+        "id": 20,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0,
+        "sort_order": 1
+      },
+      {
+        "id": 21,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0,
+        "sort_order": 2
+      },
+      {
+        "id": 22,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0,
+        "sort_order": 3
+      }
+    ],
+    "type": "attribute",
+    "links": {
+      "self": "http://api.cookbook.com/attributes/101"
+    }
+  },
+  "meta": {
+    "id": "101",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attributes/101"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attributes__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/attributes</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the attribute resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attributes__id__put_request" data-toggle="tab">Request</a></li><li><a href="#attributes__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attributes__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "code": "project_type_new"
+  }
+}</code></pre></div><div class="tab-pane" id="attributes__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 101,
+    "code": "project_type_new",
+    "admin_label": "Project Type",
+    "admin_notice": "",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "Residential",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "status": "user_defined",
+    "data": {
+      "input_type": "select_input"
+    },
+    "created_at": "2016-07-24T12:44:26+0000",
+    "updated_at": "2016-07-24T12:44:26+0000",
+    "options": [
+      {
+        "id": 19,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1,
+        "sort_order": 0
+      },
+      {
+        "id": 20,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0,
+        "sort_order": 1
+      },
+      {
+        "id": 21,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0,
+        "sort_order": 2
+      },
+      {
+        "id": 22,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0,
+        "sort_order": 3
+      }
+    ],
+    "type": "attribute",
+    "links": {
+      "self": "http://api.cookbook.com/attributes/101"
+    }
+  },
+  "meta": {
+    "id": "101",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attributes/101"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "attribute": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attributes__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/attributes</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the attribute resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attributes__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#attributes__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attributes__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="attributes__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="attribute_sets" class="panel-title">Attribute Sets</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_attribute_sets"><span class="parent"></span>/attribute-sets</a> <span class="methods"><a href="#attribute_sets_get"><span class="badge badge_get">get</span></a> <a href="#attribute_sets_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_attribute_sets" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#attribute_sets_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of attribute-sets</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attribute_sets_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new attribute-set resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="attribute_sets_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/attribute-sets</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of attribute-sets</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attribute_sets_get_request" data-toggle="tab">Request</a></li><li><a href="#attribute_sets_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attribute_sets_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="attribute_sets_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 123,
+      "type": "attribute-set",
+      "code": "page-default-set",
+      "entity_type_id": 1,
+      "entity_type": {
+        "id": 1,
+        "type": "entity-type",
+        "links": {
+          "self": "http://api.cookbook.com/entity-types/1"
+        }
+      },
+      "name": "Page Default",
+      "primary_attribute_id": 1,
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-07-31T17:42:47+0000",
+      "attributes": [
+        {
+          "id": 1,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/2"
+          }
+        },
+        {
+          "id": 3,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/3"
+          }
+        }
+      ],
+      "links": {
+        "self": "http://api.cookbook.com/attribute-sets/123"
+      }
+    },
+    {
+      "id": 125,
+      "type": "attribute-set",
+      "code": "contact-page-set",
+      "entity_type_id": 1,
+      "entity_type": {
+        "id": 1,
+        "type": "entity-type",
+        "links": {
+          "self": "http://api.cookbook.com/entity-types/1"
+        }
+      },
+      "name": "Contact Page",
+      "primary_attribute_id": 1,
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-07-31T17:42:47+0000",
+      "attributes": [
+        {
+          "id": 1,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/2"
+          }
+        },
+        {
+          "id": 4,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/4"
+          }
+        },
+        {
+          "id": 5,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/5"
+          }
+        }
+      ],
+      "links": {
+        "self": "http://api.cookbook.com/attribute-sets/125"
+      }
+    },
+    {
+      "id": 137,
+      "type": "attribute-set",
+      "code": "about-page-set",
+      "entity_type_id": 1,
+      "entity_type": {
+        "id": 1,
+        "type": "entity-type",
+        "links": {
+          "self": "http://api.cookbook.com/entity-types/1"
+        }
+      },
+      "name": "About Page",
+      "primary_attribute_id": 1,
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-07-31T17:42:47+0000",
+      "attributes": [
+        {
+          "id": 1,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/1"
+          }
+        },
+        {
+          "id": 6,
+          "type": "attribute",
+          "links": {
+            "self": "http://api.cookbook.com/attributes/6"
+          }
+        }
+      ],
+      "links": {
+        "self": "http://api.cookbook.com/attribute-sets/137"
+      }
+    }
+  ],
+  "meta": {
+    "count": 3,
+    "offset": 0,
+    "limit": 0,
+    "total": 3,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attribute-sets"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attribute_sets_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/attribute-sets</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new attribute-set resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attribute_sets_post_request" data-toggle="tab">Request</a></li><li><a href="#attribute_sets_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attribute_sets_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "code": "page-default-set",
+    "entity_type_id": 1,
+    "name": "Page Default",
+    "primary_attribute_id": 1,
+    "attributes": [
+      {
+        "id": 1,
+        "type": "attribute"
+      },
+      {
+        "id": 2,
+        "type": "attribute"
+      },
+      {
+        "id": 3,
+        "type": "attribute"
+      }
+    ]
+  }
+}</code></pre></div><div class="tab-pane" id="attribute_sets_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 123,
+    "type": "attribute-set",
+    "code": "page-default-set",
+    "entity_type_id": 1,
+    "entity_type": {
+      "id": 1,
+      "type": "entity-type",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/1"
+      }
+    },
+    "name": "Page Default",
+    "primary_attribute_id": 1,
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-07-31T17:42:47+0000",
+    "attributes": [
+      {
+        "id": 1,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/1"
+        }
+      },
+      {
+        "id": 2,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/2"
+        }
+      },
+      {
+        "id": 3,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/3"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbook.com/attribute-sets/123"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attribute-sets/123"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "attribute-set": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_attribute_sets__id_"><span class="parent">/attribute-sets</span>/{id}</a> <span class="methods"><a href="#attribute_sets__id__get"><span class="badge badge_get">get</span></a> <a href="#attribute_sets__id__put"><span class="badge badge_put">put</span></a> <a href="#attribute_sets__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_attribute_sets__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#attribute_sets__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the attribute-set resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attribute_sets__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the attribute-set resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#attribute_sets__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the attribute-set resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="attribute_sets__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/attribute-sets</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the attribute-set resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attribute_sets__id__get_request" data-toggle="tab">Request</a></li><li><a href="#attribute_sets__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attribute_sets__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="attribute_sets__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 123,
+    "type": "attribute-set",
+    "code": "page-default-set",
+    "entity_type_id": 1,
+    "entity_type": {
+      "id": 1,
+      "type": "entity-type",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/1"
+      }
+    },
+    "name": "Page Default",
+    "primary_attribute_id": 1,
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-07-31T17:42:47+0000",
+    "attributes": [
+      {
+        "id": 1,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/1"
+        }
+      },
+      {
+        "id": 2,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/2"
+        }
+      },
+      {
+        "id": 3,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/3"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbook.com/attribute-sets/123"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attribute-sets/123"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attribute_sets__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/attribute-sets</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the attribute-set resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attribute_sets__id__put_request" data-toggle="tab">Request</a></li><li><a href="#attribute_sets__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attribute_sets__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "name": "Sample Page",
+    "primary_attribute_id": 5,
+    "attributes": [
+      {
+        "id": 5,
+        "type": "attribute"
+      },
+      {
+        "id": 6,
+        "type": "attribute"
+      }
+    ]
+  }
+}</code></pre></div><div class="tab-pane" id="attribute_sets__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 123,
+    "type": "attribute-set",
+    "code": "page-default-set",
+    "entity_type_id": 1,
+    "entity_type": {
+      "id": 1,
+      "type": "entity-type",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/1"
+      }
+    },
+    "name": "Sample Page",
+    "primary_attribute_id": 5,
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-07-31T17:42:47+0000",
+    "attributes": [
+      {
+        "id": 5,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/5"
+        }
+      },
+      {
+        "id": 6,
+        "type": "attribute",
+        "links": {
+          "self": "http://api.cookbook.com/attributes/6"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbook.com/attribute-sets/123"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attribute-sets/123"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "attribute-set": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="attribute_sets__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/attribute-sets</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the attribute-set resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#attribute_sets__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#attribute_sets__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="attribute_sets__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="attribute_sets__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="entity_types" class="panel-title">Entity Types</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_entity_types"><span class="parent"></span>/entity-types</a> <span class="methods"><a href="#entity_types_get"><span class="badge badge_get">get</span></a> <a href="#entity_types_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_entity_types" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#entity_types_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of entity-types</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entity_types_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new entity-type resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="entity_types_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/entity-types</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of entity-types</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entity_types_get_request" data-toggle="tab">Request</a></li><li><a href="#entity_types_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entity_types_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="entity_types_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "type": "entity-type",
+      "code": "page",
+      "endpoint": "pages",
+      "name": "Page",
+      "plural_name": "Pages",
+      "localized": 1,
+      "localized_workflow": 1,
+      "workflow_id": 2,
+      "workflow": {
+        "id": 2,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbook.com/workflows/2"
+        }
+      },
+      "default_point_id": 3,
+      "default_point": {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbook.com/workflow-points/3"
+        }
+      },
+      "multiple_sets": 1,
+      "default_set_id": 0,
+      "attribute_sets": [
+        {
+          "id": 1,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/2"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T15:31:00+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/1"
+      }
+    },
+    {
+      "id": 3,
+      "type": "entity-type",
+      "code": "category",
+      "endpoint": "categories",
+      "name": "Category",
+      "plural_name": "Categories",
+      "localized": 0,
+      "localized_workflow": 0,
+      "workflow_id": 1,
+      "workflow": {
+        "id": 1,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbook.com/workflows/1"
+        }
+      },
+      "default_point_id": 1,
+      "default_point": {
+        "id": 1,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbook.com/workflow-points/1"
+        }
+      },
+      "multiple_sets": 1,
+      "default_set_id": 0,
+      "attribute_sets": [
+        {
+          "id": 3,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/3"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T15:31:00+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/3"
+      }
+    },
+    {
+      "id": 5,
+      "type": "entity-type",
+      "code": "project",
+      "endpoint": "projects",
+      "name": "Project",
+      "plural_name": "Projects",
+      "localized": 1,
+      "localized_workflow": 1,
+      "workflow_id": 2,
+      "workflow": {
+        "id": 2,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbook.com/workflows/2"
+        }
+      },
+      "default_point_id": 3,
+      "default_point": {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbook.com/workflow-points/3"
+        }
+      },
+      "multiple_sets": 1,
+      "default_set_id": 0,
+      "attribute_sets": [
+        {
+          "id": 4,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/4"
+          }
+        },
+        {
+          "id": 5,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/5"
+          }
+        },
+        {
+          "id": 6,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/6"
+          }
+        },
+        {
+          "id": 7,
+          "type": "attribute-set",
+          "links": {
+            "self": "http://api.cookbook.com/attribute-sets/7"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T15:31:00+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entity-types/5"
+      }
+    }
+  ],
+  "meta": {
+    "count": 3,
+    "offset": 0,
+    "limit": 0,
+    "total": 3,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entity-types"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entity_types_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/entity-types</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new entity-type resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entity_types_post_request" data-toggle="tab">Request</a></li><li><a href="#entity_types_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entity_types_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "code": "page",
+    "endpoint": "pages",
+    "name": "Page",
+    "plural_name": "Pages",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "default_point_id": 3,
+    "multiple_sets": 1
+  }
+}</code></pre></div><div class="tab-pane" id="entity_types_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "entity-type",
+    "code": "page",
+    "endpoint": "pages",
+    "name": "Page",
+    "plural_name": "Pages",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbook.com/workflows/2"
+      }
+    },
+    "default_point_id": 3,
+    "default_point": {
+      "id": 3,
+      "type": "workflow-point",
+      "links": {
+        "self": "http://api.cookbook.com/workflow-points/3"
+      }
+    },
+    "multiple_sets": 1,
+    "default_set_id": 0,
+    "attribute_sets": [
+      {
+        "id": 1,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/1"
+        }
+      },
+      {
+        "id": 2,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/2"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-04-07T15:31:00+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entity-types/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entity-types/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "entity-type": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_entity_types__id_"><span class="parent">/entity-types</span>/{id}</a> <span class="methods"><a href="#entity_types__id__get"><span class="badge badge_get">get</span></a> <a href="#entity_types__id__put"><span class="badge badge_put">put</span></a> <a href="#entity_types__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_entity_types__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#entity_types__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the entity-type resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entity_types__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the entity-type resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entity_types__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the entity-type resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="entity_types__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/entity-types</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the entity-type resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entity_types__id__get_request" data-toggle="tab">Request</a></li><li><a href="#entity_types__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entity_types__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="entity_types__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "entity-type",
+    "code": "page",
+    "endpoint": "pages",
+    "name": "Page",
+    "plural_name": "Pages",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbook.com/workflows/2"
+      }
+    },
+    "default_point_id": 3,
+    "default_point": {
+      "id": 3,
+      "type": "workflow-point",
+      "links": {
+        "self": "http://api.cookbook.com/workflow-points/3"
+      }
+    },
+    "multiple_sets": 1,
+    "default_set_id": 0,
+    "attribute_sets": [
+      {
+        "id": 1,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/1"
+        }
+      },
+      {
+        "id": 2,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/2"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-04-07T15:31:00+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entity-types/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entity-types/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entity_types__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/entity-types</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the entity-type resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entity_types__id__put_request" data-toggle="tab">Request</a></li><li><a href="#entity_types__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entity_types__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "name": "Web Page",
+    "plural_name": "Web Pages"
+  }
+}</code></pre></div><div class="tab-pane" id="entity_types__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "entity-type",
+    "code": "page",
+    "endpoint": "pages",
+    "name": "Web Page",
+    "plural_name": "Web Pages",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbook.com/workflows/2"
+      }
+    },
+    "default_point_id": 3,
+    "default_point": {
+      "id": 3,
+      "type": "workflow-point",
+      "links": {
+        "self": "http://api.cookbook.com/workflow-points/3"
+      }
+    },
+    "multiple_sets": 1,
+    "default_set_id": 0,
+    "attribute_sets": [
+      {
+        "id": 1,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/1"
+        }
+      },
+      {
+        "id": 2,
+        "type": "attribute-set",
+        "links": {
+          "self": "http://api.cookbook.com/attribute-sets/2"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-04-07T15:31:00+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entity-types/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entity-types/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "entity-type": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entity_types__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/entity-types</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the entity-type resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entity_types__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#entity_types__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entity_types__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="entity_types__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="entites" class="panel-title">Entites</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_entites"><span class="parent"></span>/entites</a> <span class="methods"><a href="#entites_get"><span class="badge badge_get">get</span></a> <a href="#entites_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_entites" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#entites_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of entites</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entites_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new entite resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="entites_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/entites</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of entites</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entites_get_request" data-toggle="tab">Request</a></li><li><a href="#entites_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entites_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="entites_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 218,
+      "type": "entity",
+      "entity_type_id": 1,
+      "attribute_set_id": 1,
+      "entity_type": "page",
+      "localized": 1,
+      "localized_workflow": 1,
+      "workflow_id": 2,
+      "primary_field": "title",
+      "status": {
+        "en_US": "published",
+        "fr_FR": "draft"
+      },
+      "fields": {
+        "title": {
+          "en_US": "Page title",
+          "fr_FR": ""
+        },
+        "body": {
+          "en_US": "&lt;h1&gt;You can enter text in HTML editor&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;And we think that is neat feature for your clients.&lt;/p&gt;",
+          "fr_FR": ""
+        },
+        "tag_input": [
+          "green",
+          "blue",
+          "red"
+        ],
+        "date_field": "2016-08-19T22:00:00+0000",
+        "decimal_number": 31.8,
+        "int_number": 32,
+        "multiselect": [
+          "food",
+          "garden"
+        ],
+        "boolean_input": 0,
+        "relation": [
+          {
+            "id": 1,
+            "type": "entity",
+            "links": {
+              "self": "http://api.cookbook.com/entities/1"
+            }
+          },
+          {
+            "id": 2,
+            "type": "entity",
+            "links": {
+              "self": "http://api.cookbook.com/entities/2"
+            }
+          }
+        ],
+        "asset_collection": [
+          {
+            "id": 2,
+            "type": "file",
+            "links": {
+              "self": "http://api.cookbook.com/files/2"
+            }
+          },
+          {
+            "id": 12,
+            "type": "file",
+            "links": {
+              "self": "http://api.cookbook.com/files/12"
+            }
+          }
+        ]
+      },
+      "created_at": "2016-08-01T20:51:37+0000",
+      "updated_at": "2016-08-03T17:23:06+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entities/218"
+      }
+    },
+    {
+      "id": 1,
+      "type": "entity",
+      "entity_type_id": 2,
+      "attribute_set_id": 2,
+      "entity_type": "category",
+      "localized": 0,
+      "localized_workflow": 0,
+      "workflow_id": 1,
+      "primary_field": "name",
+      "status": "public",
+      "fields": {
+        "name": "Blog Pages",
+        "description": "Just pages that matter to blog.",
+        "show_in_navigation": false,
+        "featured_image": {
+          "id": 2,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/2"
+          }
+        }
+      },
+      "created_at": "2016-08-01T20:51:37+0000",
+      "updated_at": "2016-08-03T17:23:06+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entities/1"
+      }
+    },
+    {
+      "id": 2,
+      "type": "entity",
+      "entity_type_id": 2,
+      "attribute_set_id": 2,
+      "entity_type": "category",
+      "localized": 0,
+      "localized_workflow": 0,
+      "workflow_id": 1,
+      "primary_field": "name",
+      "status": "public",
+      "fields": {
+        "name": "Project Pages",
+        "description": "Just pages that matter to projects.",
+        "show_in_navigation": true,
+        "featured_image": {
+          "id": 5,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/5"
+          }
+        }
+      },
+      "created_at": "2016-08-01T20:51:37+0000",
+      "updated_at": "2016-08-03T17:23:06+0000",
+      "links": {
+        "self": "http://api.cookbook.com/entities/2"
+      }
+    }
+  ],
+  "meta": {
+    "count": 3,
+    "offset": 0,
+    "limit": 0,
+    "total": 3,
+    "filter": [],
+    "sort": [],
+    "include": [],
+    "locale": null,
+    "status": null
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entities"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entites_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/entites</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new entite resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entites_post_request" data-toggle="tab">Request</a></li><li><a href="#entites_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entites_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "entity_type_id": 1,
+    "attribute_set_id": 1,
+    "status": {
+      "en_US": "draft",
+      "fr_FR": "draft"
+    },
+    "fields": {
+      "title": {
+        "en_US": "Page title",
+        "fr_FR": ""
+      },
+      "body": {
+        "en_US": "&lt;h1&gt;You can enter text in HTML editor&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;And we think that is neat feature for your clients.&lt;/p&gt;",
+        "fr_FR": ""
+      },
+      "tag_input": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "date_field": "2016-08-19T22:00:00+0000",
+      "decimal_number": 31.8,
+      "int_number": 32,
+      "multiselect": [
+        "food",
+        "garden"
+      ],
+      "boolean_input": 0,
+      "relation": [
+        {
+          "id": 1,
+          "type": "entity"
+        },
+        {
+          "id": 2,
+          "type": "entity"
+        }
+      ],
+      "asset_collection": [
+        {
+          "id": 2,
+          "type": "file"
+        },
+        {
+          "id": 12,
+          "type": "file"
+        }
+      ]
+    }
+  }
+}</code></pre></div><div class="tab-pane" id="entites_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 218,
+    "type": "entity",
+    "entity_type_id": 1,
+    "attribute_set_id": 1,
+    "entity_type": "page",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "primary_field": "title",
+    "status": {
+      "en_US": "published",
+      "fr_FR": "draft"
+    },
+    "fields": {
+      "title": {
+        "en_US": "Page title",
+        "fr_FR": ""
+      },
+      "body": {
+        "en_US": "&lt;h1&gt;You can enter text in HTML editor&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;And we think that is neat feature for your clients.&lt;/p&gt;",
+        "fr_FR": ""
+      },
+      "tag_input": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "date_field": "2016-08-19T22:00:00+0000",
+      "decimal_number": 31.8,
+      "int_number": 32,
+      "multiselect": [
+        "food",
+        "garden"
+      ],
+      "boolean_input": 0,
+      "relation": [
+        {
+          "id": 1,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/2"
+          }
+        }
+      ],
+      "asset_collection": [
+        {
+          "id": 2,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/2"
+          }
+        },
+        {
+          "id": 12,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/12"
+          }
+        }
+      ]
+    },
+    "created_at": "2016-08-01T20:51:37+0000",
+    "updated_at": "2016-08-03T17:23:06+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entities/218"
+    }
+  },
+  "meta": {
+    "id": "218",
+    "include": [],
+    "locale": null,
+    "status": null
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entities/218"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_entites__id_"><span class="parent">/entites</span>/{id}</a> <span class="methods"><a href="#entites__id__get"><span class="badge badge_get">get</span></a> <a href="#entites__id__put"><span class="badge badge_put">put</span></a> <a href="#entites__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_entites__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#entites__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the entite resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entites__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the entite resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#entites__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the entite resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="entites__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/entites</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the entite resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entites__id__get_request" data-toggle="tab">Request</a></li><li><a href="#entites__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entites__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="entites__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 218,
+    "type": "entity",
+    "entity_type_id": 1,
+    "attribute_set_id": 1,
+    "entity_type": "page",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "primary_field": "title",
+    "status": {
+      "en_US": "published",
+      "fr_FR": "draft"
+    },
+    "fields": {
+      "title": {
+        "en_US": "Page title",
+        "fr_FR": ""
+      },
+      "body": {
+        "en_US": "&lt;h1&gt;You can enter text in HTML editor&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;And we think that is neat feature for your clients.&lt;/p&gt;",
+        "fr_FR": ""
+      },
+      "tag_input": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "date_field": "2016-08-19T22:00:00+0000",
+      "decimal_number": 31.8,
+      "int_number": 32,
+      "multiselect": [
+        "food",
+        "garden"
+      ],
+      "boolean_input": 0,
+      "relation": [
+        {
+          "id": 1,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/2"
+          }
+        }
+      ],
+      "asset_collection": [
+        {
+          "id": 2,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/2"
+          }
+        },
+        {
+          "id": 12,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/12"
+          }
+        }
+      ]
+    },
+    "created_at": "2016-08-01T20:51:37+0000",
+    "updated_at": "2016-08-03T17:23:06+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entities/218"
+    }
+  },
+  "meta": {
+    "id": "218",
+    "include": [],
+    "locale": null,
+    "status": null
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entities/218"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entites__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/entites</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the entite resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entites__id__put_request" data-toggle="tab">Request</a></li><li><a href="#entites__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entites__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "fields": {
+      "multiselect": [
+        "electronics"
+      ],
+      "body": {
+        "fr_FR": "&lt;h1&gt;This is new headline fro french version&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;Excusez-moi. Je ne parle pas français.&lt;/p&gt;"
+      }
+    }
+  }
+}</code></pre></div><div class="tab-pane" id="entites__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 218,
+    "type": "entity",
+    "entity_type_id": 1,
+    "attribute_set_id": 1,
+    "entity_type": "page",
+    "localized": 1,
+    "localized_workflow": 1,
+    "workflow_id": 2,
+    "primary_field": "title",
+    "status": {
+      "en_US": "published",
+      "fr_FR": "draft"
+    },
+    "fields": {
+      "title": {
+        "en_US": "Page title",
+        "fr_FR": ""
+      },
+      "body": {
+        "en_US": "&lt;h1&gt;You can enter text in HTML editor&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;And we think that is neat feature for your clients.&lt;/p&gt;",
+        "fr_FR": "&lt;h1&gt;This is new headline fro french version&lt;/h1&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;Excusez-moi. Je ne parle pas français.&lt;/p&gt;"
+      },
+      "tag_input": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "date_field": "2016-08-19T22:00:00+0000",
+      "decimal_number": 31.8,
+      "int_number": 32,
+      "multiselect": [
+        "electronics"
+      ],
+      "boolean_input": 0,
+      "relation": [
+        {
+          "id": 1,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/1"
+          }
+        },
+        {
+          "id": 2,
+          "type": "entity",
+          "links": {
+            "self": "http://api.cookbook.com/entities/2"
+          }
+        }
+      ],
+      "asset_collection": [
+        {
+          "id": 2,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/2"
+          }
+        },
+        {
+          "id": 12,
+          "type": "file",
+          "links": {
+            "self": "http://api.cookbook.com/files/12"
+          }
+        }
+      ]
+    },
+    "created_at": "2016-08-01T20:51:37+0000",
+    "updated_at": "2016-08-03T17:23:06+0000",
+    "links": {
+      "self": "http://api.cookbook.com/entities/218"
+    }
+  },
+  "meta": {
+    "id": "218",
+    "include": [],
+    "locale": null,
+    "status": null
+  },
+  "links": {
+    "self": "http://api.cookbook.com/entities/218"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="entites__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/entites</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the entite resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#entites__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#entites__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="entites__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="entites__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="locales" class="panel-title">Locales</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_locales"><span class="parent"></span>/locales</a> <span class="methods"><a href="#locales_get"><span class="badge badge_get">get</span></a> <a href="#locales_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_locales" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#locales_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of locales</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#locales_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new locale resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="locales_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/locales</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of locales</p></div><ul class="nav nav-tabs"><li class="active"><a href="#locales_get_request" data-toggle="tab">Request</a></li><li><a href="#locales_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="locales_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="locales_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "type": "locale",
+      "code": "en_US",
+      "name": "English",
+      "description": "English/US locale",
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-08-02T14:40:23+0000",
+      "links": {
+        "self": "http://api.cookbook.com/locales/1"
+      }
+    },
+    {
+      "id": 2,
+      "type": "locale",
+      "code": "fr_FR",
+      "name": "French",
+      "description": "French locale",
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-08-01T21:32:38+0000",
+      "links": {
+        "self": "http://api.cookbook.com/locales/2"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "offset": 0,
+    "limit": 0,
+    "total": 2,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/locales"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="locales_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/locales</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new locale resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#locales_post_request" data-toggle="tab">Request</a></li><li><a href="#locales_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="locales_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "code": "en_US",
+    "name": "English",
+    "description": "English/US locale"
+  }
+}</code></pre></div><div class="tab-pane" id="locales_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "locale",
+    "code": "en_US",
+    "name": "English",
+    "description": "English/US locale",
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-08-02T14:40:23+0000",
+    "links": {
+      "self": "http://api.cookbook.com/locales/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/locales/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "locale": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_locales__id_"><span class="parent">/locales</span>/{id}</a> <span class="methods"><a href="#locales__id__get"><span class="badge badge_get">get</span></a> <a href="#locales__id__put"><span class="badge badge_put">put</span></a> <a href="#locales__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_locales__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#locales__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the locale resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#locales__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the locale resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#locales__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the locale resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="locales__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/locales</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the locale resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#locales__id__get_request" data-toggle="tab">Request</a></li><li><a href="#locales__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="locales__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="locales__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "locale",
+    "code": "en_US",
+    "name": "English",
+    "description": "English/US locale",
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-08-02T14:40:23+0000",
+    "links": {
+      "self": "http://api.cookbook.com/locales/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/locales/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="locales__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/locales</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the locale resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#locales__id__put_request" data-toggle="tab">Request</a></li><li><a href="#locales__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="locales__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "description": "US locale, English language"
+  }
+}</code></pre></div><div class="tab-pane" id="locales__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 1,
+    "type": "locale",
+    "code": "en_US",
+    "name": "English",
+    "description": "US locale, English language",
+    "created_at": "2016-04-07T15:31:00+0000",
+    "updated_at": "2016-08-02T14:40:23+0000",
+    "links": {
+      "self": "http://api.cookbook.com/locales/1"
+    }
+  },
+  "meta": {
+    "id": "1",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/locales/1"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "locale": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="locales__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/locales</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the locale resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#locales__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#locales__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="locales__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="locales__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="workflows" class="panel-title">Workflows</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_workflows"><span class="parent"></span>/workflows</a> <span class="methods"><a href="#workflows_get"><span class="badge badge_get">get</span></a> <a href="#workflows_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_workflows" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#workflows_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of workflows</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflows_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new workflow resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflows_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/workflows</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of workflows</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflows_get_request" data-toggle="tab">Request</a></li><li><a href="#workflows_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflows_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="workflows_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 1,
+      "type": "workflow",
+      "name": "Default",
+      "description": "Only one state. Public.",
+      "created_at": "2016-04-07T15:30:50+0000",
+      "updated_at": "2016-04-07T15:30:50+0000",
+      "points": [
+        {
+          "id": 1,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/1"
+          }
+        }
+      ],
+      "links": {
+        "self": "http://api.cookbookcms.com/workflows/1"
+      }
+    },
+    {
+      "id": 2,
+      "type": "workflow",
+      "name": "Simple publishing",
+      "description": "Simple trashed, draft, published workflow",
+      "created_at": "2016-04-07T15:30:50+0000",
+      "updated_at": "2016-04-07T15:30:50+0000",
+      "points": [
+        {
+          "id": 2,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/2"
+          }
+        },
+        {
+          "id": 3,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/3"
+          }
+        },
+        {
+          "id": 4,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/4"
+          }
+        }
+      ],
+      "links": {
+        "self": "http://api.cookbookcms.com/workflows/2"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "offset": 0,
+    "limit": 0,
+    "total": 2,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflows"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflows_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/workflows</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new workflow resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflows_post_request" data-toggle="tab">Request</a></li><li><a href="#workflows_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflows_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "name": "Simple publishing",
+    "description": "Simple trashed, draft, published workflow"
+  }
+}</code></pre></div><div class="tab-pane" id="workflows_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 2,
+    "type": "workflow",
+    "name": "Simple publishing",
+    "description": "Simple trashed, draft, published workflow",
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "points": [
+      {
+        "id": 2,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/2"
+        }
+      },
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      },
+      {
+        "id": 4,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/4"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbookcms.com/workflows/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflows/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "workflow": {
+      "name": [
+        "Name is required."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_workflows__id_"><span class="parent">/workflows</span>/{id}</a> <span class="methods"><a href="#workflows__id__get"><span class="badge badge_get">get</span></a> <a href="#workflows__id__put"><span class="badge badge_put">put</span></a> <a href="#workflows__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_workflows__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#workflows__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the workflow resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflows__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the workflow resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflows__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the workflow resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflows__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/workflows</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the workflow resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflows__id__get_request" data-toggle="tab">Request</a></li><li><a href="#workflows__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflows__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="workflows__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 2,
+    "type": "workflow",
+    "name": "Simple publishing",
+    "description": "Simple trashed, draft, published workflow",
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "points": [
+      {
+        "id": 2,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/2"
+        }
+      },
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      },
+      {
+        "id": 4,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/4"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbookcms.com/workflows/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflows/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflows__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/workflows</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the workflow resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflows__id__put_request" data-toggle="tab">Request</a></li><li><a href="#workflows__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflows__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "name": "Default workflow"
+  }
+}</code></pre></div><div class="tab-pane" id="workflows__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "name": "Default workflow",
+    "description": "Simple trashed, draft, published workflow",
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "points": [
+      {
+        "id": 2,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/2"
+        }
+      },
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      },
+      {
+        "id": 4,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/4"
+        }
+      }
+    ],
+    "links": {
+      "self": "http://api.cookbookcms.com/workflows/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflows/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "workflow": {
+      "name": [
+        "Name is required."
+      ]
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflows__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/workflows</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the workflow resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflows__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#workflows__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflows__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="workflows__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="workflow_points" class="panel-title">Workflow Points</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_workflow_points"><span class="parent"></span>/workflow-points</a> <span class="methods"><a href="#workflow_points_get"><span class="badge badge_get">get</span></a> <a href="#workflow_points_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_workflow_points" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#workflow_points_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get a list of workflow-points</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflow_points_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a new workflow-point resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflow_points_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/workflow-points</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get a list of workflow-points</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflow_points_get_request" data-toggle="tab">Request</a></li><li><a href="#workflow_points_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflow_points_get_request"><h3>Query Parameters</h3><ul><li><strong>filter</strong>: <em>(string)</em><p>Filter criteria.</p></li><li><strong>sort</strong>: <em>(string)</em><p>Sort criteria.</p></li><li><strong>limit</strong>: <em>(number - maximum: 200)</em><p>How many results to take, not to exceed 200</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li><li><strong>offset</strong>: <em>(number)</em><p>How many results to skip.</p><p><strong>Example</strong>:</p><pre><code>20</code></pre></li></ul></div><div class="tab-pane" id="workflow_points_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": [
+    {
+      "id": 2,
+      "type": "workflow-point",
+      "workflow_id": 2,
+      "status": "trashed",
+      "endpoint": "trash",
+      "action": "Trash",
+      "name": "Trashed",
+      "public": 0,
+      "deleted": 1,
+      "description": "Trashed objects",
+      "sort_order": 0,
+      "workflow": {
+        "id": 2,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflows/2"
+        }
+      },
+      "steps": [
+        {
+          "id": 3,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/3"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:30:50+0000",
+      "updated_at": "2016-04-07T15:30:50+0000",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflow-points/2"
+      }
+    },
+    {
+      "id": 3,
+      "type": "workflow-point",
+      "workflow_id": 2,
+      "status": "draft",
+      "endpoint": "move-to-drafts",
+      "action": "Move to drafts",
+      "name": "Draft",
+      "public": 0,
+      "deleted": 0,
+      "description": "Draft objects",
+      "sort_order": 1,
+      "workflow": {
+        "id": 2,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflows/2"
+        }
+      },
+      "steps": [
+        {
+          "id": 2,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/2"
+          }
+        },
+        {
+          "id": 4,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/4"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:30:50+0000",
+      "updated_at": "2016-04-07T15:30:50+0000",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflow-points/3"
+      }
+    },
+    {
+      "id": 4,
+      "type": "workflow-point",
+      "workflow_id": 2,
+      "status": "published",
+      "endpoint": "publish",
+      "action": "Publish",
+      "name": "Published",
+      "public": 1,
+      "deleted": 0,
+      "description": "Published objects",
+      "sort_order": 2,
+      "workflow": {
+        "id": 2,
+        "type": "workflow",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflows/2"
+        }
+      },
+      "steps": [
+        {
+          "id": 2,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/2"
+          }
+        },
+        {
+          "id": 3,
+          "type": "workflow-point",
+          "links": {
+            "self": "http://api.cookbookcms.com/workflow-points/3"
+          }
+        }
+      ],
+      "created_at": "2016-04-07T15:30:50+0000",
+      "updated_at": "2016-04-07T15:30:50+0000",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflow-points/3"
+      }
+    }
+  ],
+  "meta": {
+    "count": 3,
+    "offset": 0,
+    "limit": 0,
+    "total": 3,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflow-points"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflow_points_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/workflow-points</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a new workflow-point resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflow_points_post_request" data-toggle="tab">Request</a></li><li><a href="#workflow_points_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflow_points_post_request"><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "workflow_id": 2,
+    "status": "trashed",
+    "endpoint": "trash",
+    "action": "Trash",
+    "name": "Trashed",
+    "public": 0,
+    "deleted": 1,
+    "description": "Trashed objects",
+    "sort_order": 0,
+    "steps": [
+      {
+        "id": 3,
+        "type": "workflow-point"
+      }
+    ]
+  }
+}</code></pre></div><div class="tab-pane" id="workflow_points_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 2,
+    "type": "workflow-point",
+    "workflow_id": 2,
+    "status": "trashed",
+    "endpoint": "trash",
+    "action": "Trash",
+    "name": "Trashed",
+    "public": 0,
+    "deleted": 1,
+    "description": "Trashed objects",
+    "sort_order": 0,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflows/2"
+      }
+    },
+    "steps": [
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "links": {
+      "self": "http://api.cookbookcms.com/workflow-points/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflow-points/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "value": ""
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_workflow_points__id_"><span class="parent">/workflow-points</span>/{id}</a> <span class="methods"><a href="#workflow_points__id__get"><span class="badge badge_get">get</span></a> <a href="#workflow_points__id__put"><span class="badge badge_put">put</span></a> <a href="#workflow_points__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_workflow_points__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#workflow_points__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get the workflow-point resource by id.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflow_points__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update the workflow-point resource.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#workflow_points__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete the workflow-point resource.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflow_points__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/workflow-points</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get the workflow-point resource by id.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflow_points__id__get_request" data-toggle="tab">Request</a></li><li><a href="#workflow_points__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflow_points__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="workflow_points__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 2,
+    "type": "workflow-point",
+    "workflow_id": 2,
+    "status": "trashed",
+    "endpoint": "trash",
+    "action": "Trash",
+    "name": "Trashed",
+    "public": 0,
+    "deleted": 1,
+    "description": "Trashed objects",
+    "sort_order": 0,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflows/2"
+      }
+    },
+    "steps": [
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "links": {
+      "self": "http://api.cookbookcms.com/workflow-points/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflow-points/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflow_points__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/workflow-points</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update the workflow-point resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflow_points__id__put_request" data-toggle="tab">Request</a></li><li><a href="#workflow_points__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflow_points__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "status": "archived",
+    "endpoint": "archive",
+    "action": "Archive",
+    "name": "Archived",
+    "description": "Archived objects"
+  }
+}</code></pre></div><div class="tab-pane" id="workflow_points__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "data": {
+    "id": 2,
+    "type": "workflow-point",
+    "workflow_id": 2,
+    "status": "archived",
+    "endpoint": "archive",
+    "action": "Archive",
+    "name": "Archived",
+    "public": 0,
+    "deleted": 1,
+    "description": "Archived objects",
+    "sort_order": 0,
+    "workflow": {
+      "id": 2,
+      "type": "workflow",
+      "links": {
+        "self": "http://api.cookbookcms.com/workflows/2"
+      }
+    },
+    "steps": [
+      {
+        "id": 3,
+        "type": "workflow-point",
+        "links": {
+          "self": "http://api.cookbookcms.com/workflow-points/3"
+        }
+      }
+    ],
+    "created_at": "2016-04-07T15:30:50+0000",
+    "updated_at": "2016-04-07T15:30:50+0000",
+    "links": {
+      "self": "http://api.cookbookcms.com/workflow-points/2"
+    }
+  },
+  "meta": {
+    "id": "2",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbookcms.com/workflow-points/2"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "value": ""
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="workflow_points__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/workflow-points</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete the workflow-point resource.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#workflow_points__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#workflow_points__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="workflow_points__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="workflow_points__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 204,
+  "message": "Resource deleted."
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "status_code": 401,
+  "message": "401 unauthorized access"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media Type: application/json</strong></p><p><strong>Type</strong>:</p><ul></ul><p><strong>Example</strong>:</p><pre><code>{
+  "message": "404 Not Found",
+  "status_code": 404
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#attributes">Attributes</a></li><li><a href="#attribute_sets">Attribute Sets</a></li><li><a href="#entity_types">Entity Types</a></li><li><a href="#entites">Entites</a></li><li><a href="#locales">Locales</a></li><li><a href="#workflows">Workflows</a></li><li><a href="#workflow_points">Workflow Points</a></li></ul></div></div></div></div></body></html>

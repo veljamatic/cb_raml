@@ -1,0 +1,85 @@
+#%RAML 1.0 ResourceType
+usage: Use this to describe a resource that shows single item.
+displayName: Resource Member
+
+
+get:
+  description: |
+    Get the <<resourcePathName|!singularize>> resource by id.
+  responses:
+    200:
+      body:
+        application/json:
+          example:
+            value: <<exampleItem>>
+    404:
+      body:
+        application/json:
+          example: |
+            {
+              "message": "404 Not Found",
+              "status_code": 404
+            }
+put:
+  description: |
+    Update the <<resourcePathName|!singularize>> resource.
+  body:
+    application/json:
+      example:
+        value: <<exampleUpdate>>
+  responses:
+    200: 
+      body:
+        application/json:
+          example:
+            value: <<exampleUpdated>>
+    401:
+      body:
+        application/json:
+          example: |
+            {
+              "status_code": 401,
+              "message": "401 unauthorized access"
+            }
+    404: 
+      body:
+        application/json:
+          example: | 
+            {
+              "message": "404 Not Found",
+              "status_code": 404
+            }
+    422: 
+      body:
+        application/json:
+          example: 
+              value: <<exampleItemUnprocessable>>
+  
+delete:
+  description: |
+    Delete the <<resourcePathName|!singularize>> resource.
+  responses:
+    204:
+      body:
+        application/json:
+          example: |
+            {
+              "status_code": 204,
+              "message": "Resource deleted."
+            }
+    401:
+      body:
+        application/json:
+          example: |
+            {
+              "status_code": 401,
+              "message": "401 unauthorized access"
+            }
+    404: 
+      body:
+        application/json:
+          example: | 
+            {
+              "message": "404 Not Found",
+              "status_code": 404
+            }

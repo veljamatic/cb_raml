@@ -1,0 +1,42 @@
+{
+  "data": {
+    "code": "project_type",
+    "admin_label": "Project Type",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "data": {
+      "input_type": "select_input"
+    },
+    "options": [
+      {
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1
+      },
+      {
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0
+      },
+      {
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0
+      },
+      {
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0
+      }
+    ]
+  }
+}

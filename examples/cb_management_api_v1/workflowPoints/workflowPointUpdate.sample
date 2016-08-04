@@ -1,0 +1,9 @@
+{
+  "data":{
+    "status":"archived",
+    "endpoint":"archive",
+    "action":"Archive",
+    "name":"Archived",
+    "description":"Archived objects"
+  }
+}

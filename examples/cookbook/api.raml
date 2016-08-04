@@ -1,0 +1,126 @@
+#%RAML 1.0
+title: CookBook Management API
+version: v1
+baseUri: http://api.cookbookcms.com
+mediaType: application/json
+protocols: [ HTTP, HTTPS ]
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  member: !include resourceTypes/member.raml
+
+traits:
+  filterable: 
+    queryParameters:
+      filter?:
+        description: Filter criteria.
+        type: object
+  sortable: 
+    queryParameters:
+      sort?:
+        description: Sort criteria.
+        type: string
+  paged:
+    queryParameters:
+      limit?:
+        description: How many results to take, not to exceed <<maxLimit>>
+        type: number
+        maximum: 200
+        example: 20
+      offset?:
+        description: How many results to skip.
+        type: number
+        example: 20
+
+/attributes:
+  type: 
+    collection: 
+      exampleList: !include attributes/attributes.sample
+      exampleNew: !include attributes/attributeNew.sample
+      exampleItemUnprocessable: !include attributes/attributeErrorUnprocessable.sample
+      exampleItem: !include attributes/attribute.sample
+  get:
+    is: [
+        filterable, 
+        sortable, 
+        paged: { 
+          maxLimit: 200 
+        } 
+      ]
+  /{id}:
+    type: 
+      member:
+        exampleItem: !include attributes/attribute.sample
+        exampleUpdate: !include attributes/attributeUpdate.sample
+        exampleItemUnprocessable: !include attributes/attributeErrorUnprocessable.sample
+/attribute-sets:
+  get:
+    is: [
+      sortable, 
+      paged: { 
+        maxLimit: 200 
+      } 
+    ]
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+    
+/entity-types:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+
+/entites:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+
+/workflows:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+
+/workflow-points:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+    
+/locales:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+    
+/users:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+
+/consumers:
+  get:
+  post:
+  /{id}:
+    get:
+    put:
+    delete:
+    
+    

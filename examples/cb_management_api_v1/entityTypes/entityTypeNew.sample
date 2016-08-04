@@ -1,0 +1,13 @@
+{
+  "data":{
+    "code":"page",
+    "endpoint":"pages",
+    "name":"Page",
+    "plural_name":"Pages",
+    "localized":1,
+    "localized_workflow":1,
+    "workflow_id":2,
+    "default_point_id":3,
+    "multiple_sets":1
+  }
+}

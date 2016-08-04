@@ -1,0 +1,12 @@
+{
+  "data":{
+    "fields":{
+      "multiselect":[
+        "electronics"
+      ],
+      "body":{
+        "fr_FR":"<h1>This is new headline fro french version<\/h1>\n<p>&nbsp;<\/p>\n<p>Excusez-moi. Je ne parle pas français.<\/p>"
+      }
+    }
+  }
+}

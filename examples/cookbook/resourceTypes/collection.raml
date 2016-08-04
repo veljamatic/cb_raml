@@ -1,0 +1,39 @@
+#%RAML 1.0 ResourceType
+usage: Use this to describe a resource that lists items
+displayName: Resource Collection
+
+get:
+  description: Get a list of <<resourcePathName>>
+  responses:
+    200: 
+      body:
+        application/json:
+          example:
+            value: <<exampleList>>
+post:
+  description: Create a new <<resourcePathName|!singularize>> resource.
+  body:
+    application/json:
+      example:
+        value: <<exampleNew>>
+  responses:
+    201:
+      body:
+        application/json:
+          example:
+            value: <<exampleItem>>
+    401:
+      body:
+        application/json:
+          example: |
+            {
+              "status_code": 401,
+              "message": "401 unauthorized access"
+            }
+    422:
+      body:
+        application/json:
+          example: 
+              value: <<exampleItemUnprocessable>>
+        
+  

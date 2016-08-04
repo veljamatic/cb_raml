@@ -1,0 +1,19 @@
+{
+  "data":{
+    "workflow_id":2,
+    "status":"trashed",
+    "endpoint":"trash",
+    "action":"Trash",
+    "name":"Trashed",
+    "public":0,
+    "deleted":1,
+    "description":"Trashed objects",
+    "sort_order":0,
+    "steps":[
+       {
+          "id":3,
+          "type":"workflow-point"
+       }
+    ]
+  }
+}

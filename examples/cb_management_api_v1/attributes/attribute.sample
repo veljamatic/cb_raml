@@ -1,0 +1,70 @@
+{
+  "data": {
+    "id": 101,
+    "code": "project_type",
+    "admin_label": "Project Type",
+    "admin_notice": "",
+    "field_type": "select",
+    "localized": 1,
+    "default_value": "Residential",
+    "unique": 0,
+    "required": 1,
+    "filterable": 0,
+    "searchable": 0,
+    "status": "user_defined",
+    "data": {
+      "input_type": "select_input"
+    },
+    "created_at": "2016-07-24T12:44:26+0000",
+    "updated_at": "2016-07-24T12:44:26+0000",
+    "options": [
+      {
+        "id": 19,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Residential",
+        "value": "Residential",
+        "default": 1,
+        "sort_order": 0
+      },
+      {
+        "id": 20,
+        "attribute_id": 101,
+        "locale": 0,
+        "label": "Interior",
+        "value": "Interior",
+        "default": 0,
+        "sort_order": 1
+      },
+      {
+        "id": 21,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Résidentiel",
+        "value": "Residentiel",
+        "default": 0,
+        "sort_order": 2
+      },
+      {
+        "id": 22,
+        "attribute_id": 101,
+        "locale": 1,
+        "label": "Intérieur",
+        "value": "Interieur",
+        "default": 0,
+        "sort_order": 3
+      }
+    ],
+    "type": "attribute",
+    "links": {
+      "self": "http://api.cookbook.com/attributes/101"
+    }
+  },
+  "meta": {
+    "id": "101",
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/attributes/101"
+  }
+}

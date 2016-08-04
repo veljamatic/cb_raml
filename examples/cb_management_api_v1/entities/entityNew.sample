@@ -1,0 +1,53 @@
+{
+  "data":{
+    "entity_type_id":1,
+    "attribute_set_id":1,
+    "status":{
+       "en_US":"draft",
+       "fr_FR":"draft"
+    },
+    "fields":{
+      "title":{
+        "en_US":"Page title",
+        "fr_FR":""
+      },
+      "body":{
+        "en_US":"<h1>You can enter text in HTML editor<\/h1>\n<p>&nbsp;<\/p>\n<p>And we think that is neat feature for your clients.<\/p>",
+        "fr_FR":""
+      },
+      "tag_input":[
+        "green",
+        "blue",
+        "red"
+      ],
+      "date_field":"2016-08-19T22:00:00+0000",
+      "decimal_number":31.8,
+      "int_number":32,
+      "multiselect":[
+        "food",
+        "garden"
+      ],
+      "boolean_input":0,
+      "relation":[
+        {
+          "id":1,
+          "type":"entity"
+        },
+        {
+          "id":2,
+          "type":"entity"
+        }
+      ],
+      "asset_collection":[
+        {
+          "id":2,
+          "type":"file"
+        },
+        {
+          "id":12,
+          "type":"file"
+        }
+      ]
+    }
+  }
+}

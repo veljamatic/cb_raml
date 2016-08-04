@@ -1,0 +1,22 @@
+{
+  "data":{
+    "code":"page-default-set",
+    "entity_type_id":1,
+    "name":"Page Default",
+    "primary_attribute_id":1,
+    "attributes":[
+       {
+          "id":1,
+          "type":"attribute"
+       },
+       {
+          "id":2,
+          "type":"attribute"
+       },
+       {
+          "id":3,
+          "type":"attribute"
+       }
+    ]
+  }
+}

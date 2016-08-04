@@ -1,0 +1,213 @@
+#%RAML 1.0
+title: CookBook Management API
+version: v1
+baseUri: http://api.cookbookcms.com
+mediaType: application/json
+protocols: [ HTTP, HTTPS ]
+
+documentation:
+ - title: Welcome to CB Dev Center
+   content: |
+     Welcome to the _CookBook CMS_ Documentation. The _Zencoder API_
+     allows you to connect your application to our encoding service
+     and encode videos without going through the web  interface. You
+     may also benefit from one of our
+     [integration libraries](https://app.zencoder.com/docs/faq/basics/libraries)
+     for different languages.
+ - title: Legal
+   content: |
+     velja je car
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  member: !include resourceTypes/member.raml
+
+traits:
+  filterable:
+    queryParameters:
+      filter?:
+        description: Filter criteria.
+        type: string
+  sortable:
+    queryParameters:
+      sort?:
+        description: Sort criteria.
+        type: string
+  paged:
+    queryParameters:
+      limit?:
+        description: How many results to take, not to exceed <<maxLimit>>
+        type: number
+        maximum: 200
+        example: 20
+      offset?:
+        description: How many results to skip.
+        type: number
+        example: 20
+
+/attributes:
+  displayName: Attributes
+  description: !include attributes/md/doc.md
+  type:
+    collection:
+      exampleList: !include attributes/attributes.sample
+      exampleNew: !include attributes/attributeNew.sample
+      exampleItemUnprocessable: !include attributes/attributeErrorUnprocessable.sample
+      exampleItem: !include attributes/attribute.sample
+  get:
+    description: !include attributes/md/doc.md
+    is: [
+        filterable,
+        sortable,
+        paged: {
+          maxLimit: 200
+        }
+      ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include attributes/attribute.sample
+        exampleUpdate: !include attributes/attributeUpdate.sample
+        exampleUpdated: !include attributes/attributeUpdated.sample
+        exampleItemUnprocessable: !include attributes/attributeErrorUnprocessable.sample
+/attribute-sets:
+  displayName: Attribute Sets
+  type:
+    collection:
+      exampleList: !include attributeSets/attributeSets.sample
+      exampleNew: !include attributeSets/attributeSetNew.sample
+      exampleItemUnprocessable: !include attributeSets/attributeSetErrorUnprocessable.sample
+      exampleItem: !include attributeSets/attributeSet.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include attributeSets/attributeSet.sample
+        exampleUpdate: !include attributeSets/attributeSetUpdate.sample
+        exampleUpdated: !include attributeSets/attributeSetUpdated.sample
+        exampleItemUnprocessable: !include attributeSets/attributeSetErrorUnprocessable.sample
+/entity-types:
+  displayName: Entity Types
+  type:
+    collection:
+      exampleList: !include entityTypes/entityTypes.sample
+      exampleNew: !include entityTypes/entityTypeNew.sample
+      exampleItemUnprocessable: !include entityTypes/entityTypeErrorUnprocessable.sample
+      exampleItem: !include entityTypes/entityType.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include entityTypes/entityType.sample
+        exampleUpdate: !include entityTypes/entityTypeUpdate.sample
+        exampleUpdated: !include entityTypes/entityTypeUpdated.sample
+        exampleItemUnprocessable: !include entityTypes/entityTypeErrorUnprocessable.sample
+
+/entites:
+  displayName: Entites
+  type:
+    collection:
+      exampleList: !include entities/entities.sample
+      exampleNew: !include entities/entityNew.sample
+      exampleItemUnprocessable: !include entities/entityErrorUnprocessable.sample
+      exampleItem: !include entities/entity.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include entities/entity.sample
+        exampleUpdate: !include entities/entityUpdate.sample
+        exampleUpdated: !include entities/entityUpdated.sample
+        exampleItemUnprocessable: !include entities/entityErrorUnprocessable.sample
+/locales:
+  displayName: Locales
+  type:
+    collection:
+      exampleList: !include locales/locales.sample
+      exampleNew: !include locales/localeNew.sample
+      exampleItemUnprocessable: !include locales/localeErrorUnprocessable.sample
+      exampleItem: !include locales/locale.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include locales/locale.sample
+        exampleUpdate: !include locales/localeUpdate.sample
+        exampleUpdated: !include locales/localeUpdated.sample
+        exampleItemUnprocessable: !include locales/localeErrorUnprocessable.sample
+
+/workflows:
+  displayName: Workflows
+  type:
+    collection:
+      exampleList: !include workflows/workflows.sample
+      exampleNew: !include workflows/workflowNew.sample
+      exampleItemUnprocessable: !include workflows/workflowErrorUnprocessable.sample
+      exampleItem: !include workflows/workflow.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include workflows/workflow.sample
+        exampleUpdate: !include workflows/workflowUpdate.sample
+        exampleUpdated: !include workflows/workflowUpdated.sample
+        exampleItemUnprocessable: !include workflows/workflowErrorUnprocessable.sample
+
+/workflow-points:
+  displayName: Workflow Points
+  type:
+    collection:
+      exampleList: !include workflowPoints/workflowPoints.sample
+      exampleNew: !include workflowPoints/workflowPointNew.sample
+      exampleItemUnprocessable: !include workflowPoints/workflowPointErrorUnprocessable.sample
+      exampleItem: !include workflowPoints/workflowPoint.sample
+  get:
+    is: [
+      filterable,
+      sortable,
+      paged: {
+        maxLimit: 200
+      }
+    ]
+  /{id}:
+    type:
+      member:
+        exampleItem: !include workflowPoints/workflowPoint.sample
+        exampleUpdate: !include workflowPoints/workflowPointUpdate.sample
+        exampleUpdated: !include workflowPoints/workflowPointUpdated.sample
+        exampleItemUnprocessable: !include workflowPoints/workflowPointErrorUnprocessable.sample

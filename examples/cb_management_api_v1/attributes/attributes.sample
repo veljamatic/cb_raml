@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "code": "title",
+      "admin_label": "Title",
+      "admin_notice": "Article Title",
+      "field_type": "text",
+      "localized": 1,
+      "default_value": "",
+      "unique": 0,
+      "required": 1,
+      "filterable": 0,
+      "searchable": 1,
+      "status": "user_defined",
+      "data": null,
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T18:12:36+0000",
+      "options": [],
+      "type": "attribute",
+      "links": {
+        "self": "http://api.cookbook.com/attributes/1"
+      }
+    },
+    {
+      "id": 2,
+      "code": "theme",
+      "admin_label": "Theme",
+      "admin_notice": "",
+      "field_type": "select",
+      "localized": 0,
+      "default_value": "light",
+      "unique": 0,
+      "required": 1,
+      "filterable": 0,
+      "searchable": 0,
+      "status": "user_defined",
+      "data": {
+        "input_type": "radio_input"
+      },
+      "created_at": "2016-04-07T15:31:00+0000",
+      "updated_at": "2016-04-07T15:31:00+0000",
+      "options": [
+        {
+          "id": 1,
+          "attribute_id": 2,
+          "locale": 0,
+          "label": "Light",
+          "value": "light",
+          "default": 1,
+          "sort_order": 0
+        },
+        {
+          "id": 2,
+          "attribute_id": 2,
+          "locale": 0,
+          "label": "Dark",
+          "value": "dark",
+          "default": 0,
+          "sort_order": 1
+        }
+      ],
+      "type": "attribute",
+      "links": {
+        "self": "http://api.cookbook.com/attributes/2"
+      }
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "offset": 0,
+    "limit": 0,
+    "total": 2,
+    "filter": [],
+    "sort": [],
+    "include": []
+  },
+  "links": {
+    "self": "http://api.cookbook.com/<<resourcePathName>>"
+  }
+}

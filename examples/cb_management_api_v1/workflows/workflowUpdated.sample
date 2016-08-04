@@ -1,0 +1,42 @@
+{
+  "data":{
+    "name":"Default workflow",
+    "description":"Simple trashed, draft, published workflow",
+    "created_at":"2016-04-07T15:30:50+0000",
+    "updated_at":"2016-04-07T15:30:50+0000",
+    "points":[
+      {
+        "id":2,
+        "type":"workflow-point",
+        "links":{
+          "self":"http://api.cookbookcms.com/workflow-points/2"
+        }
+      },
+      {
+        "id":3,
+        "type":"workflow-point",
+        "links":{
+          "self":"http://api.cookbookcms.com/workflow-points/3"
+        }
+      },
+      {
+        "id":4,
+        "type":"workflow-point",
+        "links":{
+          "self":"http://api.cookbookcms.com/workflow-points/4"
+        }
+      }
+    ],
+    
+    "links":{
+      "self":"http://api.cookbookcms.com/workflows/2"
+    }
+  },
+  "meta":{
+    "id":"2",
+    "include":[]
+  },
+  "links":{
+    "self":"http://api.cookbookcms.com/workflows/2"
+  }
+}

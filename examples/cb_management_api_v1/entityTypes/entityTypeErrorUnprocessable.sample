@@ -1,0 +1,11 @@
+{
+  "status_code": 422,
+  "message": "422 Unprocessable Entity",
+  "errors": {
+    "entity-type": {
+      "code": [
+        "The code has already been taken."
+      ]
+    }
+  }
+}

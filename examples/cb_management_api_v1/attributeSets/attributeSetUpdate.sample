@@ -1,0 +1,16 @@
+{
+  "data": {
+      "name": "Sample Page",
+      "primary_attribute_id":5,
+      "attributes":[
+        {
+          "id":5,
+          "type":"attribute"
+        },
+        {
+          "id":6,
+          "type":"attribute"
+        }
+      ]
+  }
+}
